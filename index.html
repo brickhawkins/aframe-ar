@@ -1,7 +1,9 @@
 <!-- Augmented Reality on the Web in 10 lines of html! https://github.com/jeromeetienne/ar.js -->
-<script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"> </script>
+<script src="https://aframe.io/releases/0.2.0/aframe.min.js"></script>
+<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script>
+
 <body style='margin : 0px; overflow: hidden;'>
 	<a-scene vr-mode-ui="enabled: false" stats='false' embedded arjs='sourceType: webcam;'>
 		<a-assets>
@@ -12,7 +14,7 @@
   		preset='custom' 
   		type='pattern' 
   		url='https://brickhawkins.github.io/aframe-ar/marker/adidas.patt' vidhandler>
-		<a-entity geometry="primitive:plane;width:2;height:2;" position="0 0.1 0" material="shader:gif;src:#banana;alphaTest:0.5;"></a-entity>
+		<a-entity geometry="primitive:plane;width:2;height:2;" rotation="-90 0 0" position="0 0.1 0" material="shader:gif;src:#banana;"></a-entity>
   	</a-marker>
   	<a-entity camera></a-entity>
 	</a-scene>
