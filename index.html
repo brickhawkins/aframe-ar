@@ -4,6 +4,7 @@
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script> 
 <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"> </script>
+<script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>
 <script>
 	AFRAME.registerComponent('registerevents', 
 	{
@@ -30,11 +31,11 @@
 		{ 
 			 // Set up initial state and variables. 
 			 this.toggle = false; 
-			 this.vid = document.querySelector("#adidas-video"); 
-			 this.vid.pause(); 
+			 //this.vid = document.querySelector("#adidas-video"); 
+			 //this.vid.pause(); 
 		},
 		tick:function() 
-		{ 
+		{ /*
 			if(this.el.object3D.visible == true) 
 			{ 
 				if(!this.toggle) 
@@ -47,7 +48,7 @@
 			{ 
 				this.toggle = false; 
 				this.vid.pause(); 
-			} 
+			} */
 		} 
 	});
 
@@ -57,26 +58,18 @@
  <body style='margin : 0px; overflow: hidden;'>
     <a-scene vr-mode-ui="enabled: false" stats='false' embedded arjs='trackingMethod: best; debugUIEnabled: false'>
     	<a-assets>
-    		<video 
-    			preload="auto" 
-    			id="adidas-video" 
-    			loop="true" 
-    			autoplay="" crossorigin webkit-playsinline playsinline controls>
-           <source  type="video/webm"  src="video/adidas.mp4">
-           <h3>Error : Your browser does not support.</h3>
-        </video>
-  		</a-assets>
+		<img id="banana" src="banana.gif">
+    		<video preload="auto" id="adidas-video" loop="true" autoplay="" crossorigin webkit-playsinline playsinline controls>
+		   <source  type="video/webm"  src="video/adidas.mp4">
+		   <h3>Error : Your browser does not support.</h3>
+		</video>
+  	</a-assets>
   	<a-marker 
   		crossorigin="anonymous" 
   		preset='custom' 
   		type='pattern' 
   		url='https://brickhawkins.github.io/aframe-ar/marker/adidas.patt' vidhandler>
-	  		<a-plane  
-	  		position='0 0.1 0' 
-	  		scale="1 1 1" 
-	  		rotation="-90 0 0" 
-	  		material='transparent:true;alphaTest:0;src:#adidas-video'>
-	  		</a-plane>
+		<a-entity geometry="primitive:plane;width:2;height:2;" position="0 0.1 0" material="shader:gif;src:#banana;alphaTest:0.5;"></a-entity>
   	</a-marker>
   	<a-entity camera></a-entity>
     </a-scene>
